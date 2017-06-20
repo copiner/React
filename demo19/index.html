@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <title>React Without JSX</title>
+<body>
+    <div id="root"></div>
+<script type="text/babel">
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.toWhat}</div>;
+  }
+}
+
+ReactDOM.render(
+  <Hello toWhat="World" />,
+  document.getElementById('root')
+);
+
+//or
+
+class Hello extends React.Component {
+  render() {
+    return React.createElement('div', null, `Hello ${this.props.toWhat}`);
+  }
+}
+
+ReactDOM.render(
+  React.createElement(Hello, {toWhat: 'World'}, null),
+  document.getElementById('root')
+);
+
+
+// const e = React.createElement;
+//
+// ReactDOM.render(
+//   e('div', null, 'Hello World'),
+//   document.getElementById('root')
+// );
+
+</script>
+</body>
+</html>

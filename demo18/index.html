@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <title>React Without ES6</title>
+<body>
+    <div id="root"></div>
+<script type="text/babel">
+
+// var createReactClass = require('create-react-class');
+//
+// var Greeting = createReactClass({
+//   //Declaring Default Props
+//     getDefaultProps: function() {
+//     return {
+//       name: 'Mary'
+//     };
+//     },
+//     //Setting the Initial State
+//     getInitialState: function() {
+//       return {name: this.props.name};
+//     },
+//   render: function() {
+//     return <h1>Hello, {this.props.name}</h1>;
+//   }
+// });
+
+//or  ES6
+
+class Greeting extends React.Component {
+  //Setting the Initial State
+  constructor(props) {
+    super(props);
+    this.state = {name: props.name};
+  }
+  render() {
+    return <h1>{this.state.name},Hello, {this.props.name}</h1>;
+  }
+}
+
+//Declaring Default Props
+Greeting.defaultProps = {
+  name: 'Mary'
+};
+
+ReactDOM.render(
+  <Greeting />,
+  document.getElementById('root')
+);
+</script>
+</body>
+</html>

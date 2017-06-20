@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  //Keys used within arrays should be unique among their siblings.
+  // However they don't need to be globally unique. We can use the same keys when we produce two different arrays
+
+  //Keys serve as a hint to React but they don't get passed to your components.
+  function Blog(props) {
+    const sidebar = (
+      <ul>
+        {props.posts.map((post) =>
+          <li key={post.id}>
+            {post.title}
+          </li>
+        )}
+      </ul>
+    );
+    const content = props.posts.map((post) =>
+      <div key={post.id}>
+        <h3>{post.title}</h3>
+        <p>{post.content}</p>
+      </div>
+    );
+    return (
+      <div>
+        {sidebar}
+        <hr />
+        {content}
+      </div>
+    );
+  }
+
+  const posts = [
+    {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+    {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+  ];
+  ReactDOM.render(
+    <Blog posts={posts} />,
+    document.getElementById('root')
+  );
+  </script>
+</body>
+</html>

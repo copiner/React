@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  //此例运行有错误
+  class LoggingButton extends React.Component {
+    // This syntax ensures `this` is bound within handleClick.
+    // Warning: this is *experimental(实验性的)* syntax.
+    handleClick = () => {
+      console.log('this is:', this);
+    }
+
+    render() {
+      return (
+        <button onClick={this.handleClick}>
+          Click me
+        </button>
+      );
+    }
+    }
+
+    ReactDOM.render(
+      <LoggingButton />,
+      document.getElementById("root")
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  //Each child in an array or iterator should have a unique "key" prop
+  //碰到数组->列表的映射，或是同级元素需要移位的情况，一定要给元素加上key属性！
+  //虚拟dom 做diff时有时无法区分节点是新创建的还是修改了顺序。加入key能提高性能
+  function ListItem(props) {
+    // Correct! There is no need to specify the key here:
+    return <li>{props.value}</li>;
+  }
+
+  function NumberList(props) {
+    const numbers = props.numbers;
+    const listItems = numbers.map((number) =>
+      // Correct! Key should be specified inside the array.
+      <ListItem key={number.toString()}
+                value={number} />
+    );
+      console.log(listItems[0]);
+    return (
+      <ul>
+        {listItems}
+      </ul>
+    );
+  }
+
+  const numbers = [1, 2, 3, 4, 5];
+  ReactDOM.render(
+    <NumberList numbers={numbers} />,
+    document.getElementById('root')
+  );
+  </script>
+</body>
+</html>

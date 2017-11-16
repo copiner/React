@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="../com/react.development.js"></script>
+    <script src="../com/react-dom.development.js"></script>
+    <script src="../com/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+    class Toggle extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {id:1};
+      }
+
+      handleClick = () => {
+        var i = this.state.id;
+        i++;
+        this.addNum(i);
+      }
+
+      addNum = (num) =>{
+        this.setState(() => ({
+          id: num
+        }));
+      }
+
+      render() {
+        return (
+          <button onClick={this.handleClick}>
+          {this.state.id > 9 ? this.state.id :  "0" + this.state.id}
+          </button>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Toggle />,
+      document.getElementById('root')
+    );
+    </script>
+  </body>
+</html>

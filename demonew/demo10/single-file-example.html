@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <script src="../com/react.development.js"></script>
+  <script src="../com/react-dom.development.js"></script>
+  <script src="../com/babel.min.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+  function Greeting(props) {
+    return(
+      <div>
+        <h1>{props.firstName}</h1><h3>{props.lastName}</h3>
+      </div>
+    );
+  }
+
+  function App1() {
+    return <Greeting firstName="Ben" lastName="Hector" />;
+  }
+
+  function App2() {
+    const props = {firstName: 'Ben', lastName: 'Hector'};
+    return <Greeting {...props} />;
+  }
+
+  ReactDOM.render(
+    <App2 />,
+    document.getElementById('container')
+  );
+  </script>
+</body>
+</html>

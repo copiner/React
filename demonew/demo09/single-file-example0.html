@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <script src="../com/react.development.js"></script>
+  <script src="../com/react-dom.development.js"></script>
+  <script src="../com/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  class ProductTable extends React.Component {
+    render() {
+      const rows = [];
+      rows.push(<tr key="1"><td>name1</td></tr>);
+      rows.push(<tr key="2"><td>name2</td></tr>);
+      rows.push(<tr key="3"><td>name3</td></tr>);
+      //console.log(rows);
+      const str = 'Football';
+      console.log(str.indexOf(''));//0
+
+      return (
+        <table>
+          <tbody>{rows}</tbody>
+        </table>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <ProductTable />,
+    document.getElementById('root')
+  );
+  </script>
+</body>
+</html>

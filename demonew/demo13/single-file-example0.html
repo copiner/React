@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>PropTypes</title>
+  <script src="../com/react.development.js"></script>
+  <script src="../com/react-dom.development.js"></script>
+  <script src="../com/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(event) {
+      console.log(this.text);
+      console.log(this.checkbox);
+      console.log(this.radio);
+      alert('submitted: '+this.text.value +"-"+this.checkbox.value+"-"+this.radio.value);
+      event.preventDefault();
+    }
+
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              defaultValue="Bob"
+              type="text"
+              ref={(input) => this.text = input} />
+          </label>
+          <input defaultChecked type="radio" ref={(input) => this.radio = input}  />
+          <input defaultChecked type="checkbox" ref={(input) => this.checkbox = input}  />
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <NameForm />,
+    document.getElementById('root')
+  );
+  </script>
+</body>
+</html>

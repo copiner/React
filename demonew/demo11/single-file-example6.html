@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>ref</title>
+  <script src="../com/react.development.js"></script>
+  <script src="../com/react-dom.development.js"></script>
+  <script src="../com/babel.min.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+  function CustomTextInput(props) {
+    console.log(props.inputRef);
+    return (
+      <div>
+        <input ref={props.inputRef} />
+      </div>
+    );
+  }
+
+  function Parent(props) {
+    return (
+      <div>
+        My input: <CustomTextInput inputRef={props.inputRef} />
+      </div>
+    );
+  }
+
+
+  class Grandparent extends React.Component {
+    constructor(props) {
+        super(props);
+      }
+
+    render() {
+      return (
+        <Parent
+          inputRef={el => this.inputElement = el}
+        />
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <Grandparent />,
+    document.getElementById('container')
+  );
+  </script>
+</body>
+</html>

@@ -1,9 +1,10 @@
 .component-button {
-  display: inline-flex;
+  display: inline-flex;/*行内元素使用flex布局*/
   width: 25%;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
 
+/*当有元素同时包含.component-button和.wide时生效*/
 .component-button.wide {
   width: 50%;
 }
@@ -13,12 +14,13 @@
   border: 0;
   font-size: 12px;
   margin: 0 1px 0 0;
-  flex: 1 0 auto;
+  flex: 1 0 auto;/*注释这一行再查看效果*/
   padding: 0;
 }
-
+/*每个容器(div)最后一个 .component-button生效*/
 .component-button:last-child button {
-  margin-right: 0;
+  /*margin-right: 10px;用这一行再查看效果*/
+  margin-right: 0px;
 }
 
 .component-button.orange button {

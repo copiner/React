@@ -18,8 +18,8 @@ input:focus{
   border-bottom:2px solid black;
 }
 .bu-button {
-    margin-top: 20px;
-    height: 25px;
-    background-color:red;
-    text-align: center;
+  margin-top: 20px;
+  height: 25px;
+  background-color:red;
+  text-align: center;
 }

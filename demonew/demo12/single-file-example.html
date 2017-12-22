@@ -28,6 +28,9 @@
       }
 
       componentDidMount() {
+        //React数据获取一定要在componentDidMount里面调用
+        //你要获取外部数据并加载到组件上，只能在组件"已经"挂载到真实的网页上才能作这事情
+        //componentDidMount方法中的代码，是在组件已经完全挂载到网页上才会调用被执行，所以可以保证数据的加载
           console.log("componentDidMount");
           //ReactDOM.findDOMNode()
       }

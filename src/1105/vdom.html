@@ -1,0 +1,51 @@
+<script type="text/javascript">
+
+function renderend() {
+    return h(
+        'div',
+        null,
+        'Hello World',
+        h(
+            'ul',
+            null,
+            h(
+                'li',
+                { id: '1', 'class': 'li-1' },
+                'num1'
+            )
+        )
+    );
+}
+
+
+function flatten(arr) {
+    return [].concat.apply([], arr);
+}
+
+function h(tag, props, ...children) {
+    return {
+        tag,
+        props: props || {},
+        children: flatten(children) || []
+    };
+}
+
+let vdom = renderend();
+console.log(vdom);
+
+  /*
+  { tag: 'div',
+    props: {},
+    children: [ 'Hello World', {
+      tag: 'ul',
+      props: {},
+      children: [
+        tag:'li',
+        props:{id:'1',class:'li-1'},
+        children:['num1']
+      ]
+    }
+    ]
+  }
+*/
+</script>

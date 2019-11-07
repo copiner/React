@@ -2,6 +2,7 @@ module.exports = {
   presets:[
     ["@babel/env",{
        targets: {
+           esmodules: true,
            edge:"17",
            firefox:"60",
            chrome:"58",

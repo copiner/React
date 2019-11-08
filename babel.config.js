@@ -2,7 +2,7 @@ module.exports = {
   presets:[
     ["@babel/env",{
        targets: {
-           esmodules: true,
+           // esmodules: true,
            edge:"17",
            firefox:"60",
            chrome:"58",
@@ -14,7 +14,10 @@ module.exports = {
          proposals: true
        },
        useBuiltIns:"usage"
-    }]
+    }],
+    // ["@babel/preset-react",{
+    //      useBuiltIns:true
+    // }]
   ],
   plugins : [
      ["@babel/plugin-transform-react-jsx", {

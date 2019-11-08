@@ -1,3 +1,16 @@
+import { createElement } from './create';
+
+const nodePatchTypes = {
+    CREATE: 'create node',
+    REMOVE: 'remove node',
+    REPLACE: 'replace node',
+    UPDATE: 'update node'
+}
+
+const propPatchTypes = {
+    REMOVE: 'remove prop',
+    UPDATE: 'update prop'
+}
 
 // 更新属性
 let patchProps = (element, props) =>{
@@ -18,6 +31,8 @@ let patchProps = (element, props) =>{
 }
 
 // 给 DOM 打个补丁
+//function patch(parent, patchObj, index=0){}
+
 export function patch(parent, patchObj, index=0) {
     if (!patchObj) {
         return;

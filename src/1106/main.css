@@ -1,0 +1,6 @@
+ul li{
+  width: 200px;
+}
+ul li:nth-child(odd){
+  background-color: #ccc;
+}

@@ -1,3 +1,17 @@
+//最外层的 type 对应的是 DOM 元素的变化类型，有 4 种：新建、删除、替换和更新。
+//props 变化的 type 只有2种：更新和删除
+const nodePatchTypes = {
+    CREATE: 'create node',
+    REMOVE: 'remove node',
+    REPLACE: 'replace node',
+    UPDATE: 'update node'
+}
+
+const propPatchTypes = {
+    REMOVE: 'remove prop',
+    UPDATE: 'update prop'
+}
+
 // 比较 props 的变化
 let diffProps = (oldVDom, newVDom) => {
     const patches = [];
@@ -45,7 +59,7 @@ let diffChildren = (oldVDom, newVDom) => {
     return patches;
 }
 
-export function diff(oldVDom, newVDom) {
+function diff(oldVDom, newVDom) {
     // 新建 node
     if (oldVDom == undefined) {
         return {
@@ -92,3 +106,19 @@ export function diff(oldVDom, newVDom) {
 
     }
 }
+
+export {diff as default};
+
+//差异对象的数据结构是下面这个样子，与每一个 VDOM 元素一一对应
+/*
+{
+    type,
+    vdom,
+    props: [{
+               type,
+               key,
+               value
+            }]
+    children
+}
+*/

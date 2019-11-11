@@ -15,14 +15,15 @@ module.exports = {
        },
        useBuiltIns:"usage"
     }],
-    // ["@babel/preset-react",{
-    //      useBuiltIns:true
-    // }]
+    ["@babel/preset-react",{
+         useBuiltIns:true
+    }]
   ],
   plugins : [
      ["@babel/plugin-transform-react-jsx", {
-       pragma: "h",    // 这里可配置任意的名称
+       //pragma: "h",    // 这里可配置任意的名称这里h 则1103~1111 virtual dom里面定义h函数
        useBuiltIns:true
-     }]
+     }],
+     '@babel/plugin-proposal-class-properties'
   ]
 };

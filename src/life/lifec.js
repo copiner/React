@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom";
 import React from "react";
 
 class LifeCycle extends React.Component {
@@ -59,10 +58,10 @@ class LifeCycle extends React.Component {
         });
     }
 
-    // forceItUpdate() {
-    //     console.log("forceItUpdate");
-    //     this.forceUpdate();
-    // }
+    forceItUpdate() {
+        console.log("forceItUpdate");
+        this.forceUpdate();
+    }
 
     render() {
         console.log("render");

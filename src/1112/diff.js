@@ -16,6 +16,11 @@ const propPatchTypes = {
 
 // 比较元素类型是否相同
 let isSameType = (element, newVDom) => {
+
+    if (typeof newVDom.tag == 'function') {
+       return element._componentConstructor == newVDom.tag;
+   }
+
     const elmType = element.nodeType;
     const vdomType = typeof newVDom;
 
@@ -152,14 +157,63 @@ let diffChildren = (newVDom, parent)=>{
     }
 }
 
-function diff(dom, newVDom, parent) {
-    console.log(dom)
-    // 新建node
-    if (dom == undefined) {
-        console.log('appendChild')
-        parent.appendChild(createElement(newVDom));
-        return false;
+let buildComponentFromVDom = (dom, vdom, parent) => {
+    const cpnt = vdom.tag;
+    if (!typeof cpnt === 'function') {
+        throw new Error('vdom is not a component type');
     }
+
+    const props = getVDomProps(vdom);
+    let componentInst = dom && dom._component;
+
+    // 创建组件
+    if (componentInst == undefined) {
+        try {
+            componentInst = new cpnt(props);
+            setTimeout(() => {componentInst.setState({name: 'Dickens'})}, 5000);
+        } catch (error) {
+            throw new Error(`component creation error: ${cpnt.name}`);
+        }
+    }
+    // 组件更新
+    else {
+        componentInst.props = props;
+    }
+
+    const componentVDom = componentInst.render();
+
+    diff(dom, componentVDom, parent, componentInst);
+}
+
+let getVDomProps = (vdom) => {
+    const props = vdom.props;
+    props.children = vdom.children;
+
+    return props;
+}
+
+function diff(dom, newVDom, parent, componentInst) {
+
+    if (typeof newVDom == 'object' && typeof newVDom.tag == 'function') {
+      console.log('buildComponentFromVDom');
+       buildComponentFromVDom(dom, newVDom, parent);
+       return false;
+   }
+
+   // 新建node
+   if (dom == undefined) {
+       const dom = createElement(newVDom);
+
+       // 自定义组件
+       if (componentInst) {
+           dom._component = componentInst;
+           dom._componentConstructor = componentInst.constructor;
+           componentInst.dom = dom;
+       }
+
+       parent.appendChild(dom);
+       return false;
+   }
 
     // 删除node
     if (newVDom == undefined) {

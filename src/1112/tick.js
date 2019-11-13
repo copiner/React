@@ -12,8 +12,8 @@ export function tick(element,state,timer) {
 
     const newVDom = view(state);
     console.log(newVDom);
-    dom = newVDom;
+    //dom = newVDom;
     //新建 删除 替换 更新 dom newVDom
-    diff(dom, newVDom, element);
+    diff(dom, newVDom, element, componentInst);
 
 }

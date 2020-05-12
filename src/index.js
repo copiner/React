@@ -1,5 +1,5 @@
 const element = document.createElement('div');
-element.setAttribute("id","app");
+element.setAttribute("id","root");
 document.body.appendChild(element);
 
 
@@ -17,26 +17,16 @@ document.body.appendChild(element);
 
 
 
-
 //state
 
-import ReactDOM from "react-dom";
-import React from "react";
+import render from './life/';
 
-import App from "./state";
+render()
 
-
-ReactDOM.render(<App />, element);
-
-
-//life
-/*
-
-import ReactDOM from "react-dom";
-import React from "react";
-
-import App from "./life";
-
-
-ReactDOM.render(<App />, element);
-*/
+if (module.hot) {
+  // module.hot 为 true 则开启HMR功能
+  module.hot.accept('./life/app.js', () => {
+    // 监听index.js变化，发生变化，执行该回调函数
+    render();
+  });
+}

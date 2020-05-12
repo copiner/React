@@ -1,16 +1,14 @@
-const webpack = require('webpack');
+const Webpack = require('webpack');
 const path = require("path");
 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin  = require('clean-webpack-plugin').CleanWebpackPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isProd = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development'
 
-console.log(process.env.NODE_ENV);
-console.log(process.NODE_ENV);
-
-console.log(isProd);
+console.log(isDev);
 
 module.exports = {
   mode: "development",
@@ -45,35 +43,38 @@ module.exports = {
                 {
                   loader: 'url-loader',
                   options: {
-                    limit: 8192
+                    limit: 8*1024
                   }
                 }
               ]
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.css$/,
+                exclude: /node_modules/,
                 use: [
-                    "style-loader",
-                    'css-loader',
-                    'sass-loader'
+                    {
+                       loader: MiniCssExtractPlugin.loader,
+                       options: {
+                         //publicPath: '../',
+                         // esModule: true,
+                         // only enable hot in development
+                         hmr: isDev,
+                         // if hmr does not work, this is a forceful method.
+                         reloadAll: true
+                       }
+                    },
+                    'css-loader'
                    ]
             }
         ]
     },
     plugins: [
-          new webpack.DefinePlugin({
-             PRODUCTION: JSON.stringify(true),
-             VERSION: JSON.stringify('5fa3b9'),
-             TWO: '1+1',
-             'typeof window': JSON.stringify('object'),
-             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-          }),
          new HtmlWebpackPlugin({ // 打包输出HTML
             title: 'Hello World',
             filename: 'index.html'
          }),
          new CleanWebpackPlugin(),
-         new webpack.HotModuleReplacementPlugin()
+         new Webpack.HotModuleReplacementPlugin(),
      ],
      optimization: {
         splitChunks: {
@@ -99,7 +100,7 @@ module.exports = {
        }
     },
    devServer: {
-      contentBase: path.resolve(__dirname, "build"),
+      contentBase: path.resolve(__dirname, "../build"),
       historyApiFallback: true,
       host:"localhost",
       port: 9000,

@@ -12,10 +12,10 @@ export default class NewReactComponent extends Component {
         }
     }
 
-    defaultProps = {
+    static defaultProps = {
       color: 'blue'
     }
-    
+
     /*
     state = {
       str:"wdaonngg"
@@ -49,9 +49,13 @@ export default class NewReactComponent extends Component {
       // 更新 state 使下一次渲染可以显降级 UI
     }*/
 
-    componentDidCatch(error, info) { // 获取到javascript错误
-      console.log('componentDidCatch');
+
+    shouldComponentUpdate(nextProps, nextState) {
+      // 组件Props或者state改变时触发，true：更新，false：不更新
+      console.log('shouldComponentUpdate');
+      return true
     }
+
 
     render() {
       console.log("render");
@@ -63,19 +67,13 @@ export default class NewReactComponent extends Component {
       )
     }
 
-    componentDidMount() { // 挂载后
-      console.log('componentDidMount');
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-      // 组件Props或者state改变时触发，true：更新，false：不更新
-      console.log('shouldComponentUpdate');
-      return true
-    }
-
     getSnapshotBeforeUpdate(prevProps, prevState) { // 组件更新前触发
       console.log('getSnapshotBeforeUpdate');
       return null;
+    }
+
+    componentDidMount() { // 挂载后
+      console.log('componentDidMount');
     }
 
     componentDidUpdate() { // 组件更新后触发
@@ -84,6 +82,11 @@ export default class NewReactComponent extends Component {
 
     componentWillUnmount() { // 组件卸载时触发
       console.log('componentWillUnmount');
+    }
+
+
+    componentDidCatch(error, info) { // 获取到javascript错误
+      console.log('componentDidCatch');
     }
 }
 

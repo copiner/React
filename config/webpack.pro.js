@@ -1,23 +1,20 @@
-const webpack = require('webpack');
+const Webpack = require('webpack');
 const path = require("path");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin  = require('clean-webpack-plugin').CleanWebpackPlugin;
-const CompressionPlugin = require('compression-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-console.log(process.NODE_ENV);
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: "production",
+  devtool: 'source-map',
   entry: {
      app: './src/index.js'
   },
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: 'bundle-[hash].js',
-    chunkFilename: 'vendor-[hash].js',
     publicPath:'/'
   },
   module: {
@@ -41,40 +38,29 @@ module.exports = {
                 {
                   loader: 'url-loader',
                   options: {
-                    limit: 8192
+                    limit: 8*1024
                   }
                 }
               ]
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.css$/,
                 use: [
-
-                  // Creates `style` nodes from JS strings
-                  'style-loader',
 
                   MiniCssExtractPlugin.loader,
 
                   // Translates CSS into CommonJS
-                  'css-loader',
-                  // Compiles Sass to CSS
-                  'sass-loader',
+                  'css-loader'
                 ]
             }
         ]
     },
     plugins: [
-         new webpack.DefinePlugin({
-            PRODUCTION: JSON.stringify(true),
-            VERSION: JSON.stringify('5fa3b9'),
-            ENV: JSON.stringify(process.env.NODE_ENV)
-         }),
          new HtmlWebpackPlugin({ // 打包输出HTML
             title: 'Hello World',
             filename: 'index.html'
          }),
          new CleanWebpackPlugin(),
-         new CompressionPlugin(),
          new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // all options are optional
@@ -111,12 +97,3 @@ module.exports = {
        }
     }
 }
-//
-// if (!isProd) {
-//   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-//   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
-// }
-
-
-
-//module.exports = webpackConfig;

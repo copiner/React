@@ -1,7 +1,3 @@
-const element = document.createElement('div');
-element.setAttribute("id","root");
-document.body.appendChild(element);
-
 
 //import render from './1106/';
 
@@ -18,8 +14,11 @@ document.body.appendChild(element);
 
 
 //state
+// import render from './life/';
 
-import render from './life/';
+//Hook
+import render from './hook/';
+
 
 render()
 

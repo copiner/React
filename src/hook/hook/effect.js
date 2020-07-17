@@ -1,49 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import ReactDom from 'react-dom';
+import { useState, useEffect } from 'react';
+import { FriendStatus, FriendListItem, Chat } from './effectItem';
 
-function useFriendStatus(friend) {
-  const [isOnline, setIsOnline] = useState(null);
 
-  useEffect(() => {//返回函数
+const friendList = [
+  { id: 1, name: 'Phoebe', isOnline:'Online'},
+  { id: 2, name: 'Rachel', isOnline:'Offline'},
+  { id: 3, name: 'Ross', isOnline:'Online'},
+];
 
-    function handleStatusChange(status) {
-      setIsOnline(status.isOnline);
-    }
-    function subscribed(friend, handleStatusChange){
-      friend.status.isOnline = 'Online';
-      handleStatusChange(friend.status);
-    }
-    function unsubscribed(friend, handleStatusChange){
-      friend.status.isOnline = 'Offline';
-      handleStatusChange(friend.status);
-    }
-
-    subscribed(friend, handleStatusChange);
-    return () => {
-      unsubscribed(friend, handleStatusChange);
-    };
-
-  });
-
-  return isOnline;
-}
-
-export function FriendStatus(props) {
-  const isOnline = useFriendStatus(props.friend);
-
-  if (isOnline === null) {
-    return 'Loading...';
-  }
-  return isOnline ? 'Online' : 'Offline';
-}
-
-export function FriendListItem(props) {
-  const isOnline = useFriendStatus(props.friend);
-
-  return (
-    <ul>
-      <li style={{ color: isOnline ? 'green' : 'black' }}>
-        {props.friend.name}
-      </li>
-    </ul>
-  );
+export default function(){
+  return(
+    <div>
+      <FriendStatus friends={friendList} />
+      <FriendListItem friends={friendList} />
+      <Chat friends={friendList}/>
+    </div>
+  )
 }

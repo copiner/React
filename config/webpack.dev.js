@@ -45,14 +45,14 @@ module.exports = {
                 {
                   loader: 'file-loader',
                   options: {
-                    name: '[path][name].[ext]'
+                    outputPath: 'imgs/',
+                    name: '[name].[ext]'
                   }
                 },
                 {
                   loader: 'url-loader',
                   options: {
                     limit: 8*1024,
-                    // esModule:true,
                     name:'[hash:10].[ext]'
                   }
                 }
@@ -159,6 +159,7 @@ module.exports = {
       host:"127.0.0.1",
       port: 9000,
       inline: true,
+      publicPath: "/",
       hot: true
       // proxy: {
       //    '/api': {

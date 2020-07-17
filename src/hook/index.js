@@ -2,36 +2,37 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 import Hook from './hook';
-import { FriendStatus, FriendListItem } from './hook/effect';
 
 import App from './hook/context';
+import Counter from './hook/reducer';
+
+import Chat from './hook/effect';
+
 import Tool from './context/tool';
 import Cxt, { Ext } from './context/context';
 
 import Dyn from './dynamic/app';
 
 import Nst from './nest/app';
-
-let friend = {
-  id:1,
-  name:'wdaonngg',
-  status:{
-    isOnline:'Online'
-  }
-}
+import MouseTracker from './props/';
+import Mouse from './props/mouse';
+import Cat from './props/cat';
 
 let render = () =>{
   ReactDom.render(
       <div>
-      <FriendStatus friend={ friend }/>
-      <FriendListItem friend={ friend }/>
-      <Hook/>
-      <App/>
-      <Tool/>
-      <Cxt/>
-      <Ext/>
-      <Dyn/>
-      <Nst/>
+        <Hook/>
+        <App/>
+        <Counter/>
+        <Chat/>
+        <Tool/>
+        <Cxt/>
+        <Ext/>
+        <Dyn/>
+        <Nst/>
+
+
+        <Cat/>
       </div>,
       document.getElementById('root')
   );

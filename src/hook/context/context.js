@@ -31,7 +31,7 @@ export class Ext extends React.Component {
   // 在这个例子中，当前的 theme 值为 “dark”。
   static contextType = ThemeContext;
   render() {
-    console.log(this.context)
+    // console.log(this.context)
     return <button theme={this.context} >GHI</button>;
   }
 }
@@ -44,7 +44,7 @@ class Button extends React.Component {
   // 在这个例子中，当前的 theme 值为 “dark”。
   static contextType = ThemeContext;
   render() {
-    console.log(this.context)
+    // console.log(this.context)
     return <button theme={this.context} >DEF</button>;
   }
 }

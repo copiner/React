@@ -2,12 +2,11 @@
  a render prop is a function prop that a component uses to know what to render.
 */
 import React from 'react';
-import ReactDom from 'react-dom';
 
 import shape from './index.css';
 
 import kitPic from './cat.png';
-console.log(kitPic)
+
 class Cat extends React.Component {
   render() {
     const mouse = this.props.mouse;

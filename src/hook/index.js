@@ -5,6 +5,7 @@ import Hook from './hook';
 
 import App from './hook/context';
 import Counter from './hook/reducer';
+import Try from './hook/try';
 
 import Chat from './hook/effect';
 
@@ -18,12 +19,18 @@ import MouseTracker from './props/';
 import Mouse from './props/mouse';
 import Cat from './props/cat';
 
+import TextButton from './hook/ref';
+import CallBack from './hook/callback';
+import Memo from './hook/memo';
+
 let render = () =>{
   ReactDom.render(
       <div>
         <Hook/>
         <App/>
         <Counter/>
+        <Try/>
+
         <Chat/>
         <Tool/>
         <Cxt/>
@@ -31,8 +38,12 @@ let render = () =>{
         <Dyn/>
         <Nst/>
 
-
         <Cat/>
+
+        <TextButton/>
+        <CallBack/>
+        <Memo/>
+
       </div>,
       document.getElementById('root')
   );

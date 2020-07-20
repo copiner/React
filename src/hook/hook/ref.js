@@ -1,4 +1,7 @@
-function TextInputWithFocusButton() {
+import React from 'react';
+import { useRef } from 'react';
+
+function TextFocusButton() {
   const inputEl = useRef(null);
 
   const onButtonClick = () => {
@@ -14,4 +17,4 @@ function TextInputWithFocusButton() {
   );
 }
 
-export default TextInputWithFocusButton;
+export default TextFocusButton;

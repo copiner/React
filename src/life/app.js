@@ -13,6 +13,7 @@ class App extends React.Component {
         this.state = {
             num: Math.random() * 100
         };
+        console.log('p-constructor');
     }
 
     propsChange = () => {
@@ -52,7 +53,24 @@ class App extends React.Component {
         this.forceUpdate();
     }
 
+    static getDerivedStateFromProps(props, state) {
+      //console.log(props)
+      //console.log(state)
+      console.log('p-getDerivedStateFromProps');
+
+      return null;
+    }
+
+
+
+    shouldComponentUpdate(nextProps, nextState) {
+      // 组件Props或者state改变时触发，true：更新，false：不更新
+      console.log('p-shouldComponentUpdate');
+      return true
+    }
+
     render() {
+        console.log("p-render");
         return (
           <div>
             <ol>
@@ -65,6 +83,29 @@ class App extends React.Component {
               <LifeCycle ref="rLifeCycle" num={ this.state.num } />
           </div>
         );
+    }
+
+
+    getSnapshotBeforeUpdate(prevProps, prevState) { // 组件更新前触发
+      console.log('p-getSnapshotBeforeUpdate');
+      return null;
+    }
+
+    componentDidMount() { // 挂载后
+      console.log('p-componentDidMount');
+    }
+
+    componentDidUpdate() { // 组件更新后触发
+      console.log('p-componentDidUpdate');
+    }
+
+    componentWillUnmount() { // 组件卸载时触发
+      console.log('p-componentWillUnmount');
+    }
+
+
+    componentDidCatch(error, info) { // 获取到javascript错误
+      console.log('p-componentDidCatch');
     }
 }
 

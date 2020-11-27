@@ -30,6 +30,11 @@ c-shouldComponentUpdate
 c-render
 c-getSnapshotBeforeUpdate
 c-componentDidUpdate
+
+
+parent unmount:
+p-componentWillUnmount
+c-componentWillUnmount
 */
 import React, { Component } from 'react'
 

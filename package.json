@@ -42,6 +42,7 @@
   "dependencies": {
     "@babel/runtime": "^7.10.2",
     "@babel/runtime-corejs3": "^7.10.2",
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "lodash": "^4.17.15",
     "react": "^16.13.1",

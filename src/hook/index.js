@@ -23,9 +23,13 @@ import TextButton from './hook/ref';
 import CallBack from './hook/callback';
 import Memo from './hook/memo';
 
+import Measure from "./ref/callback";
+import SearchResults from "./effect";
+
 let render = () =>{
   ReactDom.render(
       <div>
+      { /*
         <Hook/>
         <App/>
         <Counter/>
@@ -43,6 +47,10 @@ let render = () =>{
         <TextButton/>
         <CallBack/>
         <Memo/>
+        <SearchResults />
+       */}
+
+        <Measure />
 
       </div>,
       document.getElementById('root')

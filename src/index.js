@@ -14,10 +14,10 @@
 
 
 //state
-import render from './life/';
+//import render from './life/';
 
 //Hook
-//import render from './ref/';
+import render from './hook/';
 
 render()
 

@@ -23,7 +23,7 @@ import TextButton from './hook/ref';
 import CallBack from './hook/callback';
 import Memo from './hook/memo';
 
-import Measure from "./ref/callback";
+import Measure from "./life";
 import SearchResults from "./effect";
 
 let render = () =>{

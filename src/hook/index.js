@@ -26,6 +26,8 @@ import Memo from './hook/memo';
 import Measure from "./life";
 import SearchResults from "./effect";
 
+import Romate from "./data";
+
 let render = () =>{
   ReactDom.render(
       <div>
@@ -50,7 +52,11 @@ let render = () =>{
         <SearchResults />
        */}
 
-        <Measure />
+        {
+          /*<Measure />*/
+        }
+
+        <Romate />
 
       </div>,
       document.getElementById('root')

@@ -6,19 +6,6 @@ import React, {
 } from 'react';
 import axios from 'axios';
 
-// const dataFetchReducer = (state, action) => {
-//   switch (action.type) {
-//     case 'FETCH_INIT':
-//       return { ...state };
-//     case 'FETCH_SUCCESS':
-//       return { ...state };
-//     case 'FETCH_FAILURE':
-//       return { ...state };
-//     default:
-//       throw new Error();
-//   }
-// };
-
 const dataFetchReducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_INIT':
@@ -60,7 +47,6 @@ export const useDataApi = (initialUrl, initialData) => {
 
       try {
         const result = await axios(url);
-
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (error) {
         dispatch({ type: 'FETCH_FAILURE' });

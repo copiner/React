@@ -10,7 +10,7 @@ function App() {
     { hits: [] },
   );
 
-  console.log(isLoading)
+  console.log(data)
   return (
     <Fragment>
       <form

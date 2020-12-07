@@ -27,6 +27,7 @@ import Measure from "./life";
 import SearchResults from "./effect";
 
 import Romate from "./data";
+import Generic from "./data/generic";
 
 let render = () =>{
   ReactDom.render(
@@ -57,6 +58,8 @@ let render = () =>{
         }
 
         <Romate />
+
+        <Generic />
 
       </div>,
       document.getElementById('root')

@@ -1,4 +1,5 @@
 import React, {useState,useEffect, useRef} from "react";
+import Counter from "./prev";
 
 function Old() {
   const saveRef = useRef();
@@ -13,6 +14,7 @@ function Old() {
 
   useEffect(() => {
       saveRef.current = count;
+      console.log("old useEffect")
   })
 
   return (
@@ -24,6 +26,7 @@ function Old() {
       <button onClick={handleAlertClick}>
         Show old
       </button>
+      <Counter p={{cur:count, old:saveRef.current}}/>
     </div>
   );
 }

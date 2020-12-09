@@ -4,7 +4,9 @@ import React, { useRef,useState,useEffect } from "react";
 
 function Timer(props) {
   const intervalRef = useRef();
-  const [click, setClick] = useState("发送验证码");
+  const [ti, setTi] = useState("tick");
+
+  const [clock, setClock] = useState("发送验证码");
 
   const [prevProps, setPrevProps] = useState(null);
 
@@ -29,24 +31,31 @@ function Timer(props) {
 
   if(props !== ""){
     useEffect(() => {
-      console.log('!------------')
+      console.log('shouldComponentUpdate ==')
     })
   }
 
   useEffect(() => {
     let i = 0;
+    console.log('i-'+i)
     const id = setInterval(() => {
       i++;
-      console.log('1-----------------');
-      if(i > 6){
+
+      console.log("interval-"+i)
+
+      if(i > 5){//i  === 6   7
+        console.log("tick-"+i)
+        setTi("tick-"+i);
         clearInterval(id)
       }
+
     },1000);
+
     intervalRef.current = id;
 
     return () => {
       if(intervalRef.current) clearInterval(intervalRef.current);
-      console.log('2------------')
+      console.log('return useEffect')
     };
 
   });
@@ -55,10 +64,10 @@ function Timer(props) {
     let start = 60;
     const timer=setInterval(() => {
        start--;
-       setClick(start)
+       setClock(start)
        if(start <= 0){
          clearInterval(timer);
-         setClick("发送验证码")
+         setClock("发送验证码")
        }
     },1000);
   }
@@ -66,8 +75,8 @@ function Timer(props) {
 
   return (
     <>
-      <h1>Timer</h1>
-      <button onClick={sixty}>{click}</button>
+      <h1>Timer {ti}</h1>
+      <button onClick={sixty}>{clock}</button>
     </>
   );
 }

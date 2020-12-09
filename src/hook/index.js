@@ -4,7 +4,6 @@ import ReactDom from 'react-dom';
 import Hook from './hook';
 
 import App from './hook/context';
-import Counter from './hook/reducer';
 import Try from './hook/try';
 
 import Chat from './hook/effect';
@@ -19,15 +18,19 @@ import MouseTracker from './props/';
 import Mouse from './props/mouse';
 import Cat from './props/cat';
 
-import TextButton from './hook/ref';
 import CallBack from './hook/callback';
 import Memo from './hook/memo';
 
-import Measure from "./life";
 import SearchResults from "./effect";
 
 import Romate from "./data";
 import Generic from "./data/generic";
+
+import Measure from "./state";
+
+import Box from "./state/box";
+
+import Counter from './reducer/';
 
 let render = () =>{
   ReactDom.render(
@@ -35,7 +38,6 @@ let render = () =>{
       { /*
         <Hook/>
         <App/>
-        <Counter/>
         <Try/>
 
         <Chat/>
@@ -51,15 +53,17 @@ let render = () =>{
         <CallBack/>
         <Memo/>
         <SearchResults />
-       */}
-
-        {
-          /*<Measure />*/
-        }
 
         <Romate />
-
+        <Measure />
         <Generic />
+        <Box/>
+       */}
+
+
+      <Counter/>
+
+
 
       </div>,
       document.getElementById('root')

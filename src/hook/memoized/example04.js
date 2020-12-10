@@ -1,4 +1,3 @@
-import React, { useState, useCallback, useMemo, memo } from "react";
 /*
 useCallback useMemo 性能优化
 
@@ -7,6 +6,8 @@ useCallback useMemo 性能优化
 当父组件传递状态给子组件的时候，memo好像没什么效果，子组件还是执行了，
 这时候我们就要引入hooks的useCallback、useMemo这两个钩子了
 */
+import React, { useState, useCallback, useMemo, memo } from "react";
+
 function Counter(props) {
   console.log(props)
   //useState 会返回一个数组，第1个元素是当前状态 第2个元素是设置状态的方法
@@ -14,14 +15,10 @@ function Counter(props) {
   let [state, setState] = useState( { number: 0});
   console.log("Counter");
   return (
-   <div>
-   <p>
-   {state.number}
-   </p>
-   <button onClick={() => setState({ number: state.number + 1})} >
-   +
-   </button>
-   </div>
+   <>
+     <p>{state.number}</p>
+     <button onClick={() => setState({ number: state.number + 1})} >+</button>
+   </>
   );
 }
 
@@ -56,7 +53,7 @@ function Count(props) {
    </div>
   );
 }
-
+//React.memo
 //memo 缓存返回的新组件，如果组件的属性不改变，则不刷新 类 PureComponent
 let MemoMyCounter = memo(Counter);
 let MemoMyCount = memo(Count);
@@ -77,6 +74,7 @@ function App() {
 
   return (
    <div>
+     <p>----------------momo-----------------</p>
      <input value={value} onChange={(event) => setValue(event.target.value)} />
      <p>{state.number}</p>
      <button onClick={() => setState({ number: state.number + 1})} >+</button>

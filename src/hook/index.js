@@ -18,8 +18,6 @@ import MouseTracker from './props/';
 import Mouse from './props/mouse';
 import Cat from './props/cat';
 
-import CallBack from './hook/callback';
-import Memo from './hook/memo';
 
 import SearchResults from "./effect";
 
@@ -31,6 +29,8 @@ import Measure from "./state";
 import Box from "./state/box";
 
 import Counter from './reducer/';
+
+import Memoized from './memoized';
 
 let render = () =>{
   ReactDom.render(
@@ -50,7 +50,6 @@ let render = () =>{
         <Cat/>
 
         <TextButton/>
-        <CallBack/>
         <Memo/>
         <SearchResults />
 
@@ -58,11 +57,10 @@ let render = () =>{
         <Measure />
         <Generic />
         <Box/>
+        <Counter/>
        */}
 
-
-      <Counter/>
-
+      <Memoized/>
 
 
       </div>,

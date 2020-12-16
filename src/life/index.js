@@ -3,11 +3,12 @@ import ReactDom from 'react-dom';
 
 import App from "./app";
 import Hookc from "./hookc";
+import Lasync from "./lasync";
+
 let render = () =>{
   ReactDom.render(
       <>
-        <App />
-        <Hookc />
+        <Lasync />
       </>,
       document.getElementById('root')
   );

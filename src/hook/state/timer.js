@@ -72,11 +72,12 @@ function Timer(props) {
     },1000);
   }
 
-
+  console.log(prevProps)
   return (
     <>
       <h1>Timer {ti}</h1>
       <button onClick={sixty}>{clock}</button>
+      <p>{"prevProps"}</p>
     </>
   );
 }

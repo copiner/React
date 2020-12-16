@@ -12,10 +12,10 @@
 
 
 //state
-import render from './life/';
+//import render from './life/';
 
 //Hook
-//import render from './hook/';
+import render from './hook/';
 
 render()
 

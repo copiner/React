@@ -25,9 +25,10 @@ let render = () =>{
         <Counter/>
 
         <MeasureDom/>
+        <State />
        */}
 
-      <State />
+      <Memoized />
 
       </div>,
       document.getElementById('root')

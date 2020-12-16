@@ -10,7 +10,7 @@ getSnapshotBeforeUpdate，componentDidCatch 以及 getDerivedStateFromError：�
 import React from 'react';
 import ReactDOM from "react-dom";
 import Lasyncitem from "./lasyncitem";
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useMemo } from 'react';
 
 const Lasync = () => {
   const [name, setName] = useState("parent");
@@ -47,6 +47,12 @@ const Lasync = () => {
     }, 3000)
   }
 
+  // const Item = React.memo((props) => {
+  //   Lasyncitem
+  // });
+
+  const child = useMemo(() => <Lasyncitem name={name} />, [name]);
+
   return (
 
     <>
@@ -62,7 +68,13 @@ const Lasync = () => {
       <button onClick={() => setCount(count + 1)}>late</button>
       <button onClick={arrive}>arrive</button>
       <button onClick={unmountHc}>unmount</button>
-      <Lasyncitem name={name} />
+      {
+        /*
+        <Lasyncitem name={name} />
+        */
+        child
+      }
+
     </>
   );
 };

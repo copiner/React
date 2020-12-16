@@ -4,8 +4,9 @@ useMemo和useCallback都会在组件第一次渲染的时候执行，之后会�
 */
 import React, { useState, useMemo } from "react";
 
+import Memod from './memo02';
 
-export default function WithMemo() {
+export default function WithMemo(){
     const [count, setCount] = useState(1);
     const [val, setValue] = useState('');
 
@@ -18,13 +19,16 @@ export default function WithMemo() {
         }
         return sum;
     }, [count]);
-    
+
     return <div>
         <h4>{count}-{expensive/*useMemo返回缓存的变量*/}-{val}</h4>
 
         <div>
             <button onClick={() => setCount(count + 1)}>+1</button>
             <input value={val} onChange={event => setValue(event.target.value)}/>
+
+            <button onClick={() => {setCount(1); setValue("abc")}}>RESET</button>
+            <Memod count={count}/>
         </div>
     </div>;
 }

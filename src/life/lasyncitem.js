@@ -26,7 +26,6 @@ p-useEffect-return
 c-useEffect-return
 
 
-
 -----parent state change async || child props change:
 p-render
 c-render

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 
-import SearchResults from "./effect";
+import Efe from "./effect";
 import Romate from "./data";
 import Generic from "./data/generic";
 import State from "./state";
@@ -26,9 +26,13 @@ let render = () =>{
 
         <MeasureDom/>
         <State />
+
+
+        <Memoized />
        */}
 
-      <Memoized />
+
+      <Efe />
 
       </div>,
       document.getElementById('root')

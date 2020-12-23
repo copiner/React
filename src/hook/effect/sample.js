@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useState, useEffect } from 'react';
 
-const TryHook = () => {
+const Sample = () => {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("heaven");
 
@@ -28,4 +28,4 @@ const TryHook = () => {
   );
 };
 
-export default TryHook;
+export default Sample;

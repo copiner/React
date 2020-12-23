@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-
-import Efe from "./effect";
+import State from "./state";
+import Effect from "./effect";
 import Romate from "./data";
 import Generic from "./data/generic";
-import State from "./state";
-import Box from "./state/box";
+
 import Counter from './reducer/';
 import Memoized from './memoized';
 import MeasureDom from './nodedom';
@@ -21,7 +20,6 @@ let render = () =>{
         <SearchResults />
         <Romate />
         <Generic />
-        <Box/>
         <Counter/>
 
         <MeasureDom/>
@@ -29,10 +27,12 @@ let render = () =>{
 
 
         <Memoized />
+
+        <Effect />
        */}
 
 
-      <Efe />
+      <State />
 
       </div>,
       document.getElementById('root')

@@ -1,13 +1,16 @@
 import React from 'react';
 
-import Clock from './clock';
-import Timer from './timer';
+import Counter from "./state";
 
 export default function() {
 
   return (
-    <>
-      <Timer/>
-    </>
+    <div>
+      {
+        <Counter/>
+          /*<Table />*/
+      }
+    </div>
   );
+
 }

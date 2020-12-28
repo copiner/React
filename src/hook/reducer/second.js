@@ -17,8 +17,8 @@ function reducer(state, action) {
   }
 }
 
-function Sec({initialCount}) {
-  //console.log(initialCount)
+function Second({initialCount}) {
+  console.log(initialCount)
   const [state, dispatch] = useReducer(reducer, initialCount, init);
   return (
     <>
@@ -33,4 +33,4 @@ function Sec({initialCount}) {
   );
 }
 
-export default Sec
+export default Second

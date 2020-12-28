@@ -34,7 +34,7 @@ let render = () =>{
        */}
 
 
-      <Context />
+      <Counter />
 
       </div>,
       document.getElementById('root')

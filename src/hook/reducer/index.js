@@ -1,5 +1,10 @@
+/*
+useState 的替代方案。它接收一个形如 (state, action) => newState 的 reducer，
+并返回当前的 state 以及与其配套的 dispatch方法
+*/
+
 import React, { useReducer } from 'react';
-import Sec from './sec';
+import Second from './second';
 
 const initialState = {count: 0};
 
@@ -23,7 +28,7 @@ function Counter() {
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
       <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </div>
-    <Sec initialCount={0}/>
+    <Second initialCount={0}/>
     </>
   );
 }

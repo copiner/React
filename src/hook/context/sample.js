@@ -1,3 +1,6 @@
+/*
+使用 context, 我们可以避免通过中间元素传递 props
+*/
 import React from 'react';
 
 const themes = {
@@ -11,9 +14,9 @@ const themes = {
   }
 };
 
-class Tool extends React.Component {
+class Sample extends React.Component {
   render() {
-    return <Toolbar theme={themes.dark} />;
+    return <Toolbar theme={themes.light} />;
   }
 }
 
@@ -23,16 +26,24 @@ function Toolbar(props) {
   // 因为必须将这个值层层传递所有组件。
   return (
     <div>
-      <ThemedButton theme={props.theme} />
+      <ThemedButton theme={props.theme} text={"TOOL"} />
     </div>
   );
 }
 
 class ThemedButton extends React.Component {
   render() {
-    let { theme } = this.props;
-    return <button style={{ background: theme.background, color: theme.foreground }}>ABC</button>;
+    return <Button theme={this.props.theme} text={this.props.text} />;
   }
 }
 
-export default Tool;
+function Button (props){
+  console.log(props)
+  return (
+    <button style={{ background: props.theme.background, color: props.theme.foreground }}>
+      {props.text}
+    </button>
+  )
+}
+
+export default Sample

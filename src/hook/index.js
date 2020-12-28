@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 
 import State from "./state";
 import Effect from "./effect";
+import Context from "./context";
+
 import Romate from "./data";
 import Generic from "./data/generic";
 
@@ -32,7 +34,7 @@ let render = () =>{
        */}
 
 
-      <State />
+      <Context />
 
       </div>,
       document.getElementById('root')

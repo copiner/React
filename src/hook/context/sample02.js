@@ -1,5 +1,8 @@
+
 //如何避免向下传递回调
 import React, { useReducer, useContext } from 'react';
+
+const TodosDispatch = React.createContext(null);
 
 function todosReducer(state, action) {
   switch (action.type) {
@@ -12,7 +15,7 @@ function todosReducer(state, action) {
   }
 }
 
-const TodosDispatch = React.createContext(null);
+
 
 function Todos() {
   // 提示：`dispatch` 不会在重新渲染之间变化

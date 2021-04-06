@@ -15,7 +15,10 @@
 //import render from './life/';
 
 //Hook
-import render from './hook/';
+//import render from './hook/';
+
+//more
+import render from './more/';
 
 render()
 

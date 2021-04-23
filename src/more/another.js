@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
+//闭包
 class Child extends Component {
 	componentDidMount(){
 		this.props.onRef && this.props.onRef(this);
 	}
-	func(){
+	func = () =>{
 		console.log("yep!")
 	}
 	render(){
@@ -13,13 +14,16 @@ class Child extends Component {
 }
 
 class Parents extends Component {
-	handleOnClick(){
+
+	handleOnClick=()=>{
 		this.child.func();
 	}
+
 	render(){
 		return (<div>
 			<button onClick={this.handleOnClick}>click</button>
-			<Child onRef={ node => this.child = node }></Child>
+
+			<Child onRef={ ref => this.child = ref }></Child>
 		</div>);
 	}
 }

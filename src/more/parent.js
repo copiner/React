@@ -9,7 +9,7 @@ const Child = props => {
     };
   });
   function func() {
-    console.log('yep！');
+    console.log('yep!');
   }
   return <div>CHILD</div>;
 };
